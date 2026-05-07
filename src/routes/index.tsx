@@ -124,11 +124,11 @@ function Home() {
             { title: "Personal Development", text: "Frameworks that forge character and purpose." },
           ].map((c, i) => (
             <FadeUp key={c.title} delay={i * 0.1}>
-              <div className="p-8 luxury-border rounded-xl bg-card/50 hover:bg-card transition-all hover:-translate-y-1 h-full">
-                <div className="h-12 w-12 rounded-full bg-gradient-gold flex items-center justify-center text-primary-foreground font-display text-xl">
+              <div className="card-luxury p-8 h-full">
+                <div className="relative h-14 w-14 rounded-2xl bg-gradient-gold flex items-center justify-center text-primary-foreground font-display text-xl font-bold shadow-gold">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 className="mt-5 font-display text-2xl text-gold">{c.title}</h3>
+                <h3 className="mt-6 font-display text-2xl text-gold font-semibold">{c.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
               </div>
             </FadeUp>
