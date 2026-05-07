@@ -155,15 +155,15 @@ function Home() {
         <div className="grid md:grid-cols-3 gap-6">
           {POSTS.map((p, i) => (
             <FadeUp key={p.slug} delay={i * 0.1}>
-              <Link to="/blog/$slug" params={{ slug: p.slug }} className="block group luxury-border rounded-xl overflow-hidden bg-card">
+              <Link to="/blog/$slug" params={{ slug: p.slug }} className="card-luxury block group">
                 <div className="aspect-[16/10] overflow-hidden">
-                  <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
-                <div className="p-6">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-gold/70">{p.date}</p>
-                  <h3 className="font-display text-xl mt-2 group-hover:text-gold transition-colors">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
-                  <span className="inline-flex items-center gap-1.5 mt-4 text-xs uppercase tracking-widest text-gold">
+                <div className="p-6 relative">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-gold/80 font-medium">{p.date}</p>
+                  <h3 className="font-display font-semibold text-xl mt-2 group-hover:text-gold transition-colors">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2 leading-relaxed">{p.excerpt}</p>
+                  <span className="inline-flex items-center gap-1.5 mt-5 text-xs uppercase tracking-widest text-gold font-medium group-hover:gap-2.5 transition-all">
                     Read More <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </div>
