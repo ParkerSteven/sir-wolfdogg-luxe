@@ -75,15 +75,10 @@ function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-10 flex flex-wrap gap-3 justify-center"
           >
-            <Link to="/shop" className="px-7 py-3 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-widest rounded-md hover:opacity-90 transition shadow-gold">
-              Shop Books
-            </Link>
-            <Link to="/about" className="px-7 py-3 border border-gold/50 text-gold text-xs uppercase tracking-widest rounded-md hover:bg-gold hover:text-primary-foreground transition">
-              About Author
-            </Link>
-            <Link to="/contact" className="px-7 py-3 border border-foreground/20 text-foreground/80 text-xs uppercase tracking-widest rounded-md hover:border-gold hover:text-gold transition">
-              Book Appointment
-            </Link>
+            <Link to="/shop" className="btn-gold">Shop Books</Link>
+            <Link to="/about" className="btn-outline-gold">About Author</Link>
+            <Link to="/contact" className="btn-ghost-gold">Book Appointment</Link>
+
           </motion.div>
         </div>
       </section>
