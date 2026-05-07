@@ -143,7 +143,7 @@ function Home() {
           {BOOKS.map((b, i) => <BookCard key={b.id} book={b} index={i} />)}
         </div>
         <div className="mt-12 text-center">
-          <Link to="/shop" className="inline-flex items-center gap-2 px-7 py-3 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-widest rounded-md shadow-gold">
+          <Link to="/shop" className="btn-gold">
             Browse The Bookstore <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
