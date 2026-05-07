@@ -75,15 +75,10 @@ function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-10 flex flex-wrap gap-3 justify-center"
           >
-            <Link to="/shop" className="px-7 py-3 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-widest rounded-md hover:opacity-90 transition shadow-gold">
-              Shop Books
-            </Link>
-            <Link to="/about" className="px-7 py-3 border border-gold/50 text-gold text-xs uppercase tracking-widest rounded-md hover:bg-gold hover:text-primary-foreground transition">
-              About Author
-            </Link>
-            <Link to="/contact" className="px-7 py-3 border border-foreground/20 text-foreground/80 text-xs uppercase tracking-widest rounded-md hover:border-gold hover:text-gold transition">
-              Book Appointment
-            </Link>
+            <Link to="/shop" className="btn-gold">Shop Books</Link>
+            <Link to="/about" className="btn-outline-gold">About Author</Link>
+            <Link to="/contact" className="btn-ghost-gold">Book Appointment</Link>
+
           </motion.div>
         </div>
       </section>
@@ -129,11 +124,11 @@ function Home() {
             { title: "Personal Development", text: "Frameworks that forge character and purpose." },
           ].map((c, i) => (
             <FadeUp key={c.title} delay={i * 0.1}>
-              <div className="p-8 luxury-border rounded-xl bg-card/50 hover:bg-card transition-all hover:-translate-y-1 h-full">
-                <div className="h-12 w-12 rounded-full bg-gradient-gold flex items-center justify-center text-primary-foreground font-display text-xl">
+              <div className="card-luxury p-8 h-full">
+                <div className="relative h-14 w-14 rounded-2xl bg-gradient-gold flex items-center justify-center text-primary-foreground font-display text-xl font-bold shadow-gold">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <h3 className="mt-5 font-display text-2xl text-gold">{c.title}</h3>
+                <h3 className="mt-6 font-display text-2xl text-gold font-semibold">{c.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
               </div>
             </FadeUp>
@@ -148,7 +143,7 @@ function Home() {
           {BOOKS.map((b, i) => <BookCard key={b.id} book={b} index={i} />)}
         </div>
         <div className="mt-12 text-center">
-          <Link to="/shop" className="inline-flex items-center gap-2 px-7 py-3 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-widest rounded-md shadow-gold">
+          <Link to="/shop" className="btn-gold">
             Browse The Bookstore <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -160,15 +155,15 @@ function Home() {
         <div className="grid md:grid-cols-3 gap-6">
           {POSTS.map((p, i) => (
             <FadeUp key={p.slug} delay={i * 0.1}>
-              <Link to="/blog/$slug" params={{ slug: p.slug }} className="block group luxury-border rounded-xl overflow-hidden bg-card">
+              <Link to="/blog/$slug" params={{ slug: p.slug }} className="card-luxury block group">
                 <div className="aspect-[16/10] overflow-hidden">
-                  <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
-                <div className="p-6">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-gold/70">{p.date}</p>
-                  <h3 className="font-display text-xl mt-2 group-hover:text-gold transition-colors">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
-                  <span className="inline-flex items-center gap-1.5 mt-4 text-xs uppercase tracking-widest text-gold">
+                <div className="p-6 relative">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-gold/80 font-medium">{p.date}</p>
+                  <h3 className="font-display font-semibold text-xl mt-2 group-hover:text-gold transition-colors">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2 leading-relaxed">{p.excerpt}</p>
+                  <span className="inline-flex items-center gap-1.5 mt-5 text-xs uppercase tracking-widest text-gold font-medium group-hover:gap-2.5 transition-all">
                     Read More <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </div>
@@ -184,9 +179,11 @@ function Home() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {SERVICES.map((s, i) => (
             <FadeUp key={s.title} delay={i * 0.05}>
-              <div className="p-6 luxury-border rounded-xl bg-card hover:shadow-gold transition-all h-full">
-                <s.icon className="h-8 w-8 text-gold" />
-                <h3 className="mt-4 font-display text-lg text-foreground">{s.title}</h3>
+              <div className="card-luxury p-6 h-full">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-gold-soft border border-gold/20">
+                  <s.icon className="h-6 w-6 text-gold" />
+                </div>
+                <h3 className="mt-5 font-display text-lg font-semibold text-foreground">{s.title}</h3>
                 <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{s.text}</p>
               </div>
             </FadeUp>
@@ -203,20 +200,19 @@ function Home() {
             <p className="mt-5 text-muted-foreground">
               Share Sir Wolfdogg's catalog instantly. Scan to access the bookstore, secure payment links, and exclusive author updates.
             </p>
-            <div className="mt-8 flex gap-4">
-              <Link to="/shop" className="px-6 py-3 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-widest rounded-md">
-                Open Bookstore
-              </Link>
-              <Link to="/contact" className="px-6 py-3 border border-gold/50 text-gold text-xs uppercase tracking-widest rounded-md">
-                Get In Touch
-              </Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/shop" className="btn-gold">Open Bookstore</Link>
+              <Link to="/contact" className="btn-outline-gold">Get In Touch</Link>
             </div>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <div className="aspect-square max-w-sm mx-auto luxury-border rounded-2xl bg-card flex items-center justify-center p-12">
-              <div className="text-center">
-                <QrCode className="h-40 w-40 mx-auto text-gold" strokeWidth={1} />
-                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">SirWolfdoggBookstore.com</p>
+            <div className="relative aspect-square max-w-sm mx-auto">
+              <div className="absolute -inset-6 bg-gradient-gold opacity-20 blur-3xl rounded-full" />
+              <div className="relative card-luxury aspect-square flex items-center justify-center p-12">
+                <div className="text-center">
+                  <QrCode className="h-40 w-40 mx-auto text-gold anim-float" strokeWidth={1} />
+                  <p className="mt-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">SirWolfdoggBookstore.com</p>
+                </div>
               </div>
             </div>
           </FadeUp>
@@ -233,14 +229,14 @@ function Home() {
             { title: "Speaking Inquiry", duration: "Custom", price: "On Request" },
           ].map((a, i) => (
             <FadeUp key={a.title} delay={i * 0.1}>
-              <div className="p-8 luxury-border rounded-xl bg-card text-center hover:shadow-gold transition-all">
-                <Calendar className="h-10 w-10 mx-auto text-gold" />
-                <h3 className="mt-4 font-display text-xl">{a.title}</h3>
+              <div className="card-luxury p-8 text-center">
+                <div className="inline-flex p-4 rounded-2xl bg-gradient-gold-soft border border-gold/20 mb-2">
+                  <Calendar className="h-8 w-8 text-gold" />
+                </div>
+                <h3 className="mt-4 font-display text-xl font-semibold">{a.title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{a.duration}</p>
-                <p className="mt-4 font-display text-2xl text-gradient-gold">{a.price}</p>
-                <Link to="/contact" className="inline-block mt-6 px-6 py-2.5 bg-gradient-gold text-primary-foreground text-xs uppercase tracking-widest rounded-md">
-                  Schedule
-                </Link>
+                <p className="mt-5 font-display text-3xl text-gradient-gold font-semibold">{a.price}</p>
+                <Link to="/contact" className="btn-gold mt-7 w-full justify-center">Schedule</Link>
               </div>
             </FadeUp>
           ))}
