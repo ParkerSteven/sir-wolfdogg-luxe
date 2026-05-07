@@ -35,7 +35,7 @@ function Shop() {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filtered.map((b, i) => <BookCard key={b.id} book={b} index={i} />)}
       </div>
       <div className="mt-12 text-center text-sm text-muted-foreground">

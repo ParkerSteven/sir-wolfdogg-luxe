@@ -11,8 +11,6 @@ const PRIMARY = [
 
 const SHOP_MENU = [
   { to: "/shop", label: "All Books", desc: "Browse the full catalog" },
-  { to: "/cart", label: "Cart", desc: "Review your items" },
-  { to: "/checkout", label: "Checkout", desc: "Complete your order" },
 ];
 
 const COMMUNITY_MENU = [
@@ -25,6 +23,12 @@ const COMMUNITY_MENU = [
 const SUPPORT = [
   { to: "/donation", label: "Donate" },
   { to: "/contact", label: "Contact" },
+  { to: "/login", label: "Login" },
+
+] as const;
+
+const AUTH_LINKS = [
+  { to: "/login", label: "Login" },
 ] as const;
 
 export default function Header() {
@@ -46,9 +50,8 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-strong shadow-elegant" : "bg-background/40 backdrop-blur-md"
-      }`}
+      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "glass-strong shadow-elegant" : "bg-background/40 backdrop-blur-md"
+        }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-3 group">
@@ -66,17 +69,14 @@ export default function Header() {
           {PRIMARY.map((n) => (
             <NavLink key={n.to} to={n.to} active={isActive(n.to)}>{n.label}</NavLink>
           ))}
-          <Dropdown label="Shop" items={SHOP_MENU} active={["/shop","/cart","/checkout"].includes(loc.pathname)} />
-          <Dropdown label="Community" items={COMMUNITY_MENU} active={["/blog","/forum","/guide","/faq"].includes(loc.pathname)} />
+          <Dropdown label="Shop" items={SHOP_MENU} active={["/shop", "/cart", "/checkout"].includes(loc.pathname)} />
+          <Dropdown label="Community" items={COMMUNITY_MENU} active={["/blog", "/forum", "/guide", "/faq"].includes(loc.pathname)} />
           {SUPPORT.map((n) => (
             <NavLink key={n.to} to={n.to} active={isActive(n.to)}>{n.label}</NavLink>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
-          <button aria-label="Search" className="hidden md:inline-flex p-2.5 rounded-full text-foreground/70 hover:text-gold hover:bg-secondary/60 transition-colors">
-            <Search className="h-4.5 w-4.5" />
-          </button>
           <Link
             to="/cart"
             className="relative p-2.5 rounded-full hover:bg-secondary/60 transition-colors"
@@ -110,13 +110,12 @@ export default function Header() {
         className={`lg:hidden overflow-hidden transition-[max-height] duration-500 ease-out ${open ? "max-h-[80vh]" : "max-h-0"}`}
       >
         <div className="glass border-t border-gold/15 px-4 py-5 grid gap-1">
-          {[...PRIMARY, ...SHOP_MENU, ...COMMUNITY_MENU, ...SUPPORT, { to: "/account", label: "My Account" }].map((n) => (
+          {[...PRIMARY, ...SHOP_MENU, ...COMMUNITY_MENU, ...SUPPORT, ...AUTH_LINKS, { to: "/account", label: "My Account" }].map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className={`px-4 py-3 rounded-lg text-sm tracking-wide transition-colors ${
-                isActive(n.to) ? "bg-gradient-gold-soft text-gold" : "text-foreground/85 hover:text-gold hover:bg-secondary/40"
-              }`}
+              className={`px-4 py-3 rounded-lg text-sm tracking-wide transition-colors ${isActive(n.to) ? "bg-gradient-gold-soft text-gold" : "text-foreground/85 hover:text-gold hover:bg-secondary/40"
+                }`}
             >
               {n.label}
             </Link>
@@ -132,9 +131,8 @@ function NavLink({ to, active, children }: { to: string; active: boolean; childr
   return (
     <Link
       to={to}
-      className={`relative px-4 py-2 text-sm font-medium tracking-wide rounded-full transition-colors ${
-        active ? "text-gold" : "text-foreground/80 hover:text-gold"
-      }`}
+      className={`relative px-4 py-2 text-sm font-medium tracking-wide rounded-full transition-colors ${active ? "text-gold" : "text-foreground/80 hover:text-gold"
+        }`}
     >
       {children}
       {active && <span className="absolute inset-x-3 -bottom-0.5 h-0.5 bg-gradient-gold rounded-full" />}
@@ -146,9 +144,8 @@ function Dropdown({ label, items, active }: { label: string; items: { to: string
   return (
     <div className="relative group">
       <button
-        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium tracking-wide rounded-full transition-colors ${
-          active ? "text-gold" : "text-foreground/80 hover:text-gold"
-        }`}
+        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium tracking-wide rounded-full transition-colors ${active ? "text-gold" : "text-foreground/80 hover:text-gold"
+          }`}
       >
         {label}
         <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180" />

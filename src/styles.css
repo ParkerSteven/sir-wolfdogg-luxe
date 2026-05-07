@@ -159,6 +159,14 @@
     transform: translateX(-100%);
     transition: transform 0.7s ease;
   }
+  button,
+  a[href],
+  [role="button"],
+  .btn-gold,
+  .btn-outline-gold,
+  .btn-ghost-gold {
+    cursor: pointer;
+  }
   .btn-gold:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold-lg); }
   .btn-gold:hover::before { transform: translateX(100%); }
   .btn-outline-gold {

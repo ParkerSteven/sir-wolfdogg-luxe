@@ -73,7 +73,7 @@ export default function Footer() {
                 href="#"
                 className="group p-2.5 rounded-xl glass hover:bg-gradient-gold transition-all duration-300 hover:-translate-y-1 hover:shadow-gold"
               >
-                <Icon className="h-4 w-4 text-gold group-hover:text-primary-foreground transition-colors" />
+                <Icon className="h-4 w-4 text-gold transition-colors" />
               </a>
             ))}
           </div>

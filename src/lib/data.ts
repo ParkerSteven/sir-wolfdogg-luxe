@@ -1,5 +1,5 @@
 import sharpswood from "@/assets/book-sharpswood.jpg";
-import virtues from "@/assets/book-virtues.jpg";
+import virtues from "@/assets/rs=w_1280.webp";
 import gutsy from "@/assets/book-gutsy.jpg";
 import caveman from "@/assets/book-caveman.jpg";
 import cops from "@/assets/book-cops.jpg";
@@ -57,6 +57,27 @@ export const BOOKS: Book[] = [
 export const getBook = (id: string) => BOOKS.find((b) => b.id === id);
 
 export const POSTS = [
+  {
+    slug: "the-power-of-integrity",
+    title: "The Power of Integrity in Modern Leadership",
+    excerpt: "Why character still matters in a world that rewards shortcuts.",
+    date: "April 12, 2026",
+    image: virtues,
+  },
+  {
+    slug: "writing-historical-fiction",
+    title: "Behind Sharpswood: Writing Historical Fiction",
+    excerpt: "Researching the antebellum South and bringing forgotten voices forward.",
+    date: "March 28, 2026",
+    image: sharpswood,
+  },
+  {
+    slug: "gutsy-decisions",
+    title: "Gutsy Decisions That Define a Career",
+    excerpt: "The three pivotal moments every leader will face — and how to meet them.",
+    date: "March 02, 2026",
+    image: gutsy,
+  },
   {
     slug: "the-power-of-integrity",
     title: "The Power of Integrity in Modern Leadership",

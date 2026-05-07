@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as ForumRouteImport } from './routes/forum'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -24,6 +26,16 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ShopIdRouteImport } from './routes/shop.$id'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuideRoute = GuideRouteImport.update({
   id: '/guide',
   path: '/guide',
@@ -106,6 +118,8 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/guide': typeof GuideRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$id': typeof ShopIdRoute
   '/blog/': typeof BlogIndexRoute
@@ -122,6 +136,8 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/guide': typeof GuideRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$id': typeof ShopIdRoute
   '/blog': typeof BlogIndexRoute
@@ -139,6 +155,8 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/guide': typeof GuideRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/shop/$id': typeof ShopIdRoute
   '/blog/': typeof BlogIndexRoute
@@ -157,6 +175,8 @@ export interface FileRouteTypes {
     | '/faq'
     | '/forum'
     | '/guide'
+    | '/login'
+    | '/signup'
     | '/blog/$slug'
     | '/shop/$id'
     | '/blog/'
@@ -173,6 +193,8 @@ export interface FileRouteTypes {
     | '/faq'
     | '/forum'
     | '/guide'
+    | '/login'
+    | '/signup'
     | '/blog/$slug'
     | '/shop/$id'
     | '/blog'
@@ -189,6 +211,8 @@ export interface FileRouteTypes {
     | '/faq'
     | '/forum'
     | '/guide'
+    | '/login'
+    | '/signup'
     | '/blog/$slug'
     | '/shop/$id'
     | '/blog/'
@@ -206,6 +230,8 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   ForumRoute: typeof ForumRoute
   GuideRoute: typeof GuideRoute
+  LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ShopIdRoute: typeof ShopIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -214,6 +240,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guide': {
       id: '/guide'
       path: '/guide'
@@ -326,6 +366,8 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   ForumRoute: ForumRoute,
   GuideRoute: GuideRoute,
+  LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
   BlogSlugRoute: BlogSlugRoute,
   ShopIdRoute: ShopIdRoute,
   BlogIndexRoute: BlogIndexRoute,
@@ -334,3 +376,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

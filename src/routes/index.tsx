@@ -2,8 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Mic, Users, Compass, Briefcase, QrCode, Calendar } from "lucide-react";
 import logo from "@/assets/logo.webp";
-import author from "@/assets/author.jpg";
+import sarahMiller from "@/assets/rs=w_600,cg_true,m.webp";
+import sharpswood from "@/assets/rs=w_600,cg_true_sharpswood.webp";
+import gutsyCover from "@/assets/book-gutsy.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+import consultingImage from "@/assets/rs=w_388,h_194,cg_true.webp";
+import consultingImage2 from "@/assets/rs=w_388,h_194,cg_true,m.webp";
+import editingImage from "@/assets/rs=w_600,h_600,cg_true.webp";
+import man from "@/assets/rs=w_600,h_600,cg_true_man.webp";
+
 import { BOOKS, POSTS } from "@/lib/data";
 import BookCard from "@/components/BookCard";
 import { Section, SectionTitle, FadeUp } from "@/components/Section";
@@ -83,64 +90,81 @@ function Home() {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <Section>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <FadeUp>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-gold opacity-20 blur-2xl rounded-3xl" />
-              <img src={author} alt="Leon Lanier — Sir Wolfdogg" className="relative rounded-2xl shadow-elegant luxury-border" loading="lazy" />
+      {/* FEATURED BOOK */}
+      <Section className="bg-background/95">
+        <div className="grid gap-10 xl:grid-cols-[1.2fr_0.8fr] items-start">
+          <div className="space-y-8">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-3">Black History Collection</p>
+              <h2 className="font-display text-4xl sm:text-5xl text-foreground tracking-tight">
+                Sharswood Plantation: The Legacy of Sarah Miller
+              </h2>
             </div>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="text-[11px] uppercase tracking-[0.4em] text-gold mb-3">About the Author</p>
-            <h2 className="font-display text-4xl sm:text-5xl text-gradient-gold leading-tight">
-              Leon Lanier-French
-            </h2>
-            <p className="mt-2 text-muted-foreground italic">Empowered Author · Business Professor</p>
-            <p className="mt-6 text-foreground/85 leading-relaxed">
-              Sir Wolfdogg — pen name of Leon Lanier-French — is a distinguished author, business professor,
-              and mentor whose body of work spans historical fiction, leadership, and personal development.
-              His writing is rooted in lived experience, scholarly rigor, and an unwavering commitment to integrity.
-            </p>
-            <p className="mt-4 text-foreground/85 leading-relaxed">
-              Through his books, classrooms, and keynotes, he equips readers and leaders with the principles
-              required to build lives and enterprises that endure.
-            </p>
-            <Link to="/about" className="inline-flex items-center gap-2 mt-8 text-gold hover:gap-3 transition-all">
-              Read full biography <ArrowRight className="h-4 w-4" />
-            </Link>
-          </FadeUp>
+            <div className="space-y-5 text-foreground/80 text-sm leading-relaxed">
+              <p>
+                The Legacy of Sarah Miller acknowledges a plantation Matriarch’s bond from Post-Emancipation Proclamation through early 1900s. Her Million-to-One discovery was introduced to a nationally televised audience on a Sunday NWU TV Monthly segment. A difficult Era of American history to document. Generational must-read well worth your time! Black History Masterpiece!
+              </p>
+              <p className="font-semibold text-foreground">Library Collection Item</p>
+            </div>
+            <div className="space-y-4 text-sm">
+              <div className="rounded-3xl bg-foreground/5 p-6">
+                <p className="text-muted-foreground uppercase tracking-[0.25em] mb-2">Hardback</p>
+                <p className="font-semibold text-2xl text-foreground">55.00</p>
+                <p className="mt-2 text-muted-foreground">Limited Sale 40.0</p>
+              </div>
+              <div className="rounded-3xl bg-foreground/5 p-6">
+                <p className="text-muted-foreground uppercase tracking-[0.25em] mb-2">Paperback</p>
+                <p className="font-semibold text-2xl text-foreground">25.00</p>
+                <p className="mt-2 text-muted-foreground">Free Shipping USA / Both In Stock</p>
+              </div>
+            </div>
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">*Early Sharswood sales include buried carrying book bags while supplies last.</p>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[2rem]">
+            <img src={sharpswood} alt="Sharswood Plantation book cover" className="h-[500px] w-full object-contain" loading="lazy" />
+          </div>
         </div>
       </Section>
 
-      {/* CREATIVE VERSATILITY */}
-      <Section className="bg-[oklch(0.1_0.005_60)]">
-        <SectionTitle eyebrow="Creative Versatility" title="A Voice Across Genres" sub="From sweeping historical novels to leadership doctrine — one author, many disciplines, a singular mission." />
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { title: "Historical Fiction", text: "Vivid storytelling rooted in the American experience." },
-            { title: "Leadership Doctrine", text: "Battle-tested principles for executives and founders." },
-            { title: "Personal Development", text: "Frameworks that forge character and purpose." },
-          ].map((c, i) => (
-            <FadeUp key={c.title} delay={i * 0.1}>
-              <div className="card-luxury p-8 h-full">
-                <div className="relative h-14 w-14 rounded-2xl bg-gradient-gold flex items-center justify-center text-primary-foreground font-display text-xl font-bold shadow-gold">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <h3 className="mt-6 font-display text-2xl text-gold font-semibold">{c.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
-              </div>
-            </FadeUp>
-          ))}
+      <Section className="bg-background/90">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5">
+          <div className="grid gap-12 xl:grid-cols-[0.95fr_1.05fr] items-center">
+            <div className="rounded-[2rem] overflow-hidden shadow-elegant luxury-border">
+              <img src={sarahMiller} alt="Sarah Miller after post-Emancipation Proclamation" className="h-[520px] w-full object-cover" loading="lazy" />
+            </div>
+            <div className="space-y-8">
+              <p className="text-xs uppercase tracking-[0.45em] text-gold/80">Historical portrait</p>
+              <p className="text-sm leading-8 text-foreground/85">
+              Sarah Miller after Post- Emancipation Proclamation. Sarah Miller was the Matriarch of a slave community on Virginia’s Sharswood Plantation. In the year 2020, a great grandson purchased a Virginia property (unknowingly) which previously enslaved both his and Sarah’s ancestors dating back to the1700s! An authentic discovery where chance, destiny and history intersects. Sarah’s matriarchal spirit from the 1800s is revisited in 2022 to assess America’s ever evolving culture. Historic documentation by one of Matriarch Sarah Miller’s eldest living descendants - Sir Wolfdogg Lanier-French!
+            </p>
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">(PHOTO COURTESY OF SIR WOLFDOgg LANIER-FRENCH)</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="bg-[oklch(0.08_0.02_20)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5">
+          <div className="grid gap-12 xl:grid-cols-[0.9fr_1.1fr] items-center">
+            <div className="rounded-[2rem] overflow-hidden shadow-elegant luxury-border">
+              <img src={man} alt="Raleigh Miller historic portrait" className="h-[420px] w-full object-cover" loading="lazy" />
+            </div>
+            <div className="space-y-6 text-sm leading-7 text-foreground/85">
+              <p>
+                Raleigh Miller was Sarah Miller’s first-born child (1886-1945). His age in this photo varied based on who was interviewed. The photo and shirt collar suggests late 1800s or early 1900s. A genealogist will surely discover the truth one day. A dashing Grandfather for sure!
+              </p>
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">(PHOTO Courtesy OF E. LANIER)</p>
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* PORTFOLIO / FEATURED BOOKS */}
       <Section>
         <SectionTitle eyebrow="The Portfolio" title="Featured Works" sub="A curated collection of signature titles by Sir Wolfdogg." />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {BOOKS.map((b, i) => <BookCard key={b.id} book={b} index={i} />)}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {BOOKS.slice(0, 4).map((b, i) => <BookCard key={b.id} book={b} index={i} />)}
         </div>
         <div className="mt-12 text-center">
           <Link to="/shop" className="btn-gold">
@@ -149,11 +173,33 @@ function Home() {
         </div>
       </Section>
 
+      <Section className="bg-[oklch(0.12_0.01_25)]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+          <div className="text-center">
+            <p className="text-[10px] uppercase tracking-[0.4em] text-gold mb-3">Sir Wolfdogg's Portfolio</p>
+            <h2 className="font-display text-2xl sm:text-3xl text-foreground leading-tight">
+              Gutsy Leadership: 1st Edition A Common Sense Workbook for Early Leadership Development
+            </h2>
+          </div>
+
+          <div className="mt-12 md:w-[50%] mx-auto overflow-hidden rounded-[2rem]">
+            <img src={gutsyCover} alt="Gutsy Leadership book cover" className="object-cover" loading="lazy" />
+          </div>
+
+          <div className="mt-10 space-y-4 text-center text-sm text-foreground/80">
+            <p className="font-semibold text-gold">A Common Sense Workshop for Leadership Development</p>
+            <p>Gutsy Leadership! How Gutsy are you . . . Really?</p>
+            <p>Sir Lanier-French works closely with clients to ensure visions are reality-based. Introspective Self-Improvement Must-Read for Emerging 21st Century Leaders!</p>
+            <p className="font-semibold">40.00 Hardback (In Stock / Free Shipping USA)</p>
+          </div>
+        </div>
+      </Section>
+
       {/* BLOG PREVIEW */}
       <Section className="bg-[oklch(0.1_0.005_60)]">
-        <SectionTitle eyebrow="From the Journal" title="Latest Writings" />
+        <SectionTitle eyebrow="From the Journal" title="Blogs" />
         <div className="grid md:grid-cols-3 gap-6">
-          {POSTS.map((p, i) => (
+          {POSTS.slice(0, 3).map((p, i) => (
             <FadeUp key={p.slug} delay={i * 0.1}>
               <Link to="/blog/$slug" params={{ slug: p.slug }} className="card-luxury block group">
                 <div className="aspect-[16/10] overflow-hidden">
@@ -175,19 +221,57 @@ function Home() {
 
       {/* SERVICES */}
       <Section>
-        <SectionTitle eyebrow="Overview of Services" title="Work With Sir Wolfdogg" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-          {SERVICES.map((s, i) => (
-            <FadeUp key={s.title} delay={i * 0.05}>
-              <div className="card-luxury p-6 h-full">
-                <div className="inline-flex p-3 rounded-xl bg-gradient-gold-soft border border-gold/20">
-                  <s.icon className="h-6 w-6 text-gold" />
+        <SectionTitle eyebrow="Overview of Services" title="About Sir Wolfdogg's services" />
+        <div className="grid lg:grid-cols-3 gap-6">
+          <FadeUp>
+            <div className="card-luxury p-8 h-full flex flex-col justify-between">
+              <div>
+                <div className="relative overflow-hidden rounded-3xl shadow-elegant luxury-border">
+                  <img src={editingImage} alt="Sir Wolfdogg Lanier-French" className="h-72 w-full object-cover" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent" />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold text-foreground">{s.title}</h3>
-                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{s.text}</p>
+                <h3 className="mt-6 font-display text-2xl text-gold font-semibold">About Sir Wolfdogg's services</h3>
+                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                  With over 30 years of experience as a writer and editor, I've helped businesses and individuals achieve their content goals. Let's work together! Bring your vision to life.
+                </p>
               </div>
-            </FadeUp>
-          ))}
+              <Link to="/about" className="btn-gold mt-8 inline-flex justify-center">
+                Learn More
+              </Link>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <div className="card-luxury p-8 h-full flex flex-col">
+              <div className="relative overflow-hidden rounded-3xl shadow-elegant luxury-border">
+                <img src={consultingImage} alt="Consulting service" className="h-64 w-full object-cover" loading="lazy" />
+              </div>
+              <h3 className="mt-6 font-display text-2xl text-foreground font-semibold">Consulting</h3>
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                I offer personalized consulting services to help you develop your writing skills, build your brand, and achieve your content marketing goals. From brainstorming sessions to strategy development, I'll be your partner every step of the way.
+              </p>
+            </div>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <div className="card-luxury p-8 h-full flex flex-col">
+              <div className="relative overflow-hidden rounded-3xl shadow-elegant luxury-border">
+                <img src={consultingImage2} alt="Editing and proofreading service" className="h-64 w-full object-cover" loading="lazy" />
+              </div>
+              <h3 className="mt-6 font-display text-2xl text-foreground font-semibold">Editing and Proofreading</h3>
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                I provide comprehensive editing and proofreading services to ensure your content is error-free, polished, and professional. Whether you need a quick proofread or a deep dive into your manuscript, I've got you covered.
+              </p>
+              <Link to="/about" className="mt-6 inline-flex text-gold hover:underline">
+                Scholarly Fiction Defined
+              </Link>
+              <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
+                Scholarly Fiction is written to be both mentally stimulating and disturbing. Factual stories leave little to one's imagination! Fictional stories, most times, leave too much! Regardless of individual imaginations, interpretive acceptance is attained when everyone acknowledges different ideologies of thought.
+              </p>
+              <blockquote className="mt-6 border-l-2 border-gold pl-4 text-sm italic text-foreground/80">
+                "The Unexpressed Realities of Inner Thoughts!"
+              </blockquote>
+              <p className="mt-3 text-xs uppercase tracking-[0.25em] text-muted-foreground">Sir Wolfdogg Lanier-French</p>
+            </div>
+          </FadeUp>
         </div>
       </Section>
 
@@ -211,7 +295,6 @@ function Home() {
               <div className="relative card-luxury aspect-square flex items-center justify-center p-12">
                 <div className="text-center">
                   <QrCode className="h-40 w-40 mx-auto text-gold anim-float" strokeWidth={1} />
-                  <p className="mt-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">SirWolfdoggBookstore.com</p>
                 </div>
               </div>
             </div>

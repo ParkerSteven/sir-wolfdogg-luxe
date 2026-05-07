@@ -35,7 +35,7 @@ function Post() {
   return (
     <Section>
       <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-gold mb-8">
-        <ArrowLeft className="h-4 w-4" /> Back to journal
+        <ArrowLeft className="h-4 w-4" /> Back
       </Link>
       <article className="max-w-3xl mx-auto">
         <p className="text-[11px] uppercase tracking-[0.4em] text-gold">{post.date}</p>

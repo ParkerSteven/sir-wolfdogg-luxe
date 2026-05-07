@@ -15,7 +15,7 @@ export const Route = createFileRoute("/blog/")({
 function Blog() {
   return (
     <Section>
-      <SectionTitle eyebrow="The Journal" title="Writings & Reflections" />
+      <SectionTitle title="Blogs" />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {POSTS.map((p, i) => (
           <FadeUp key={p.slug} delay={i * 0.05}>
